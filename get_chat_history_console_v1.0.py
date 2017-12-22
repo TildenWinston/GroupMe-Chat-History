@@ -23,7 +23,9 @@ import os
 import time
 
 import urllib2
-from json import load
+#import json
+
+# from json import load
 
 message_limit = 100  # cannot be greater than 100
 
@@ -170,7 +172,7 @@ def create_history(json, url, self_id, chat_type, chat_ID,
                     before_id = json['response'][msg][i]['id']
                     new_url = "%s&before_id=%s" % (url, before_id)
                     json = get_json(new_url)
-                except urllib2.HTTPError, err:
+                except urllib.HTTPError, err:
                     if err.code != 304:
                         f.write('<h1>ERROR: %s</h1>' % err.code)
                         f.write('<h1>chat_type: %s</h1>' % chat_type)
